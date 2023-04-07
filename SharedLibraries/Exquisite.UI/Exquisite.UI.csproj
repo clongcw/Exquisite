@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\6dk5kx.jpg" />
+    <None Remove="Resources\p92ex3.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Panuon.WPF.UI" Version="1.1.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\6dk5kx.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\p92ex3.jpg" />
+  </ItemGroup>
+
+</Project>
