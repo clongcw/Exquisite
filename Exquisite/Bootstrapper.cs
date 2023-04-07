@@ -34,7 +34,8 @@ namespace Exquisite
                .ForEach(viewModelType => _container.RegisterPerRequest(
                    viewModelType, viewModelType.ToString(), viewModelType));
             }
-            _container.RegisterInstance(typeof(ACViewModel), "A1", new ACViewModel());
+            _container.RegisterInstance(typeof(ACViewModel), "AC", new ACViewModel());
+            _container.RegisterInstance(typeof(DCViewModel), "DC", new DCViewModel());
         }
 
         protected override async void OnStartup(object sender, StartupEventArgs e)

@@ -45,7 +45,7 @@ namespace Exquisite.ViewModels
         {
             base.OnViewLoaded(view);
             //初始化界面
-            //await Navigate(_stepModeViewModel);
+            await Navigate(IoC.Get<ACViewModel>("AC"));
         }
 
         public async void OnMainMenuSelectionChanged(object listboxitem)
@@ -68,7 +68,8 @@ namespace Exquisite.ViewModels
             //viewname = viewname.Substring(viewname.IndexOf(':') + 1).Trim();
             switch (viewname)
             {
-                case "Home": await Navigate(IoC.Get<ACViewModel>("A1")); break;
+                case "AC": await Navigate(IoC.Get<ACViewModel>("AC")); break;
+                case "DC": await Navigate(IoC.Get<DCViewModel>("DC")); break;
 
             }
         }
