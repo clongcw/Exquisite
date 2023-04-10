@@ -12,4 +12,4 @@
 
 3.实打实打算
 
-![anchor text](image\2yeydm.png "666")
+![anchor text](https://github.com/clongcw/Exquisite/blob/master/image/2yeydm.png "666")
