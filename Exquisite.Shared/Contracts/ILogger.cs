@@ -8,9 +8,9 @@ public interface ILogger
 
     void Debug(string messageTemplate, params object[] args);
 
-    void Infomation(string message);
+    void Information(string message);
 
-    void Infomation(string messageTemplate, params object[] args);
+    void Information(string messageTemplate, params object[] args);
 
     void Warning(string message);
 

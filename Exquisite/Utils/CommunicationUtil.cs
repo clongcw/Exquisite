@@ -37,7 +37,7 @@ public static class CommunicationUtil
         if (!exist)
         {
             //端口没有注册过
-            Logger.Instance.Infomation("initDevice", "注册串口--->" + port);
+            Logger.Instance.Information("initDevice", "注册串口--->" + port);
             p.hardwareType = "COM";
             p.port = port; //串口号
             p.boudrate = boudrate;
@@ -95,7 +95,7 @@ public static class CommunicationUtil
                         // 串口打开成功，将该信息传递给该串口下的所有设备
                         for (var i = 0; i < cp.devices.Count; i++) cp.devices[i].connected = true;
 
-                        Logger.Instance.Infomation(cp.port, "打开串口成功");
+                        Logger.Instance.Information(cp.port, "打开串口成功");
                     }
                     catch (Exception e)
                     {
@@ -154,8 +154,7 @@ public static class CommunicationUtil
                         }
                         catch (Exception ee)
                         {
-                            Logger.Instance.Error(cp.devices[deviceIndex].serialNum,
-                                "串口" + cp.port + " ArgumentException\n" + ee);
+                            Logger.Instance.Error(cp.devices[deviceIndex].serialNum,"串口" + cp.port + " ArgumentException\n" + ee);
                             goto COM_INIT;
                         }
                 });
