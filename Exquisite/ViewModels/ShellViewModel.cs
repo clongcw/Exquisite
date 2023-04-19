@@ -38,7 +38,7 @@ public class ShellViewModel : Conductor<object>.Collection.OneActive
     {
         base.OnViewLoaded(view);
         //初始化界面
-        await Navigate(IoC.Get<AcViewModel>("AC"));
+        await Navigate(IoC.Get<DcViewModel>("DC"));
     }
 
     public async void OnMainMenuSelectionChanged(object listboxitem)
