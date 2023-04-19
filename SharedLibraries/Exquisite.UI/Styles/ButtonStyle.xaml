@@ -7,4 +7,5 @@
         <Setter Property="Background" Value="red" />
         <Setter Property="BorderBrush" Value="red" />
     </Style>
+
 </ResourceDictionary>
