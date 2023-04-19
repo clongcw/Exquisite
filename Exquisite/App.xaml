@@ -10,7 +10,8 @@
                     <local:Bootstrapper x:Key="Bootstrapper" />
                 </ResourceDictionary>
                 <materialDesign:BundledTheme BaseTheme="Light" PrimaryColor="DeepPurple" SecondaryColor="Lime" />
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary
+                    Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
                 <ResourceDictionary Source="/Exquisite.UI;component/Collection.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

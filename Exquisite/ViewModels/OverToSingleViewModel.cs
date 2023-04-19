@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Exquisite.ViewModels;
 
-namespace Exquisite.ViewModels
+internal class OverToSingleViewModel
 {
-    internal class OverToSingleViewModel
-    {
-    }
 }

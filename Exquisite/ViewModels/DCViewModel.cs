@@ -1,14 +1,5 @@
-﻿using Caliburn.Micro;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Exquisite.ViewModels;
 
-namespace Exquisite.ViewModels
+public class DcViewModel : ViewModelBase
 {
-    public class DCViewModel : Screen
-    {
-
-    }
 }

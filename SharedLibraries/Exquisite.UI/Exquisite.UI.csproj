@@ -1,29 +1,29 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0-windows</TargetFramework>
-    <Nullable>enable</Nullable>
-    <UseWPF>true</UseWPF>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net6.0-windows</TargetFramework>
+        <Nullable>enable</Nullable>
+        <UseWPF>true</UseWPF>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="Resources\6dk5kx.jpg" />
-    <None Remove="Resources\p92ex3.jpg" />
-    <None Remove="Resources\power.ico" />
-    <None Remove="Resources\电源.ico" />
-  </ItemGroup>
+    <ItemGroup>
+        <None Remove="Resources\6dk5kx.jpg"/>
+        <None Remove="Resources\p92ex3.jpg"/>
+        <None Remove="Resources\power.ico"/>
+        <None Remove="Resources\电源.ico"/>
+    </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Panuon.WPF.UI" Version="1.1.9" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Panuon.WPF.UI" Version="1.1.9"/>
+    </ItemGroup>
 
-  <ItemGroup>
-    <Resource Include="Resources\6dk5kx.jpg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\p92ex3.jpg" />
-    <Resource Include="Resources\power.ico" />
-    <Resource Include="Resources\电源.ico" />
-  </ItemGroup>
+    <ItemGroup>
+        <Resource Include="Resources\6dk5kx.jpg">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Resource>
+        <Resource Include="Resources\p92ex3.jpg"/>
+        <Resource Include="Resources\power.ico"/>
+        <Resource Include="Resources\电源.ico"/>
+    </ItemGroup>
 
 </Project>
