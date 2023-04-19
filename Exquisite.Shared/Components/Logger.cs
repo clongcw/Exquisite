@@ -4,7 +4,7 @@ using Serilog.Events;
 using ILogger = Exquisite.Shared.Contracts.ILogger;
 
 namespace Exquisite.Shared.Components;
-
+//方法一：静态类
 /*public  class Logger 
 {
     #region Fields
