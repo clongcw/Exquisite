@@ -9,20 +9,20 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <WrapPanel>
-            <ComboBox ItemsSource="{Binding BatteryLibs}"/>
-            <Button Content="添加电池库" cm:Message.Attach="[Event Click]=[Action AddBattery]"/>
-            <Button Content="打开" cm:Message.Attach="[Event Click]=[Action ExecuteRunDialog]"/>
-       
-        
+            <ComboBox ItemsSource="{Binding BatteryLibs}" />
+            <Button Content="添加电池库" cm:Message.Attach="[Event Click]=[Action AddBattery]" />
+            <Button Content="打开" cm:Message.Attach="[Event Click]=[Action ExecuteRunDialog]" />
+
+
         </WrapPanel>
-        <materialDesign:DialogHost 
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                                   DialogTheme="Inherit"
-                                   DialogContentUniformCornerRadius="20"/>
+        <materialDesign:DialogHost
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            DialogTheme="Inherit"
+            DialogContentUniformCornerRadius="20" />
     </Grid>
 </UserControl>

@@ -154,7 +154,8 @@ public static class CommunicationUtil
                         }
                         catch (Exception ee)
                         {
-                            Logger.Instance.Error(cp.devices[deviceIndex].serialNum,"串口" + cp.port + " ArgumentException\n" + ee);
+                            Logger.Instance.Error(cp.devices[deviceIndex].serialNum,
+                                "串口" + cp.port + " ArgumentException\n" + ee);
                             goto COM_INIT;
                         }
                 });

@@ -157,7 +157,6 @@ namespace Exquisite.Shared.Components;
     #endregion
 }*/
 
-
 public class Logger : ILogger
 {
     #region Fields

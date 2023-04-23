@@ -178,10 +178,10 @@
                 </DockPanel>
 
             </Grid>
-            
+
 
         </Grid>
-       
+
     </Border>
-    
+
 </Window>

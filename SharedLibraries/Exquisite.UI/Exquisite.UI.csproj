@@ -7,28 +7,28 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <None Remove="Resources\6dk5kx.jpg" />
-        <None Remove="Resources\exqusite.ico" />
-        <None Remove="Resources\p92ex3.jpg" />
-        <None Remove="Resources\power.ico" />
-        <None Remove="Resources\wisdomsmoke.svg" />
-        <None Remove="Resources\电源.ico" />
+        <None Remove="Resources\6dk5kx.jpg"/>
+        <None Remove="Resources\exqusite.ico"/>
+        <None Remove="Resources\p92ex3.jpg"/>
+        <None Remove="Resources\power.ico"/>
+        <None Remove="Resources\wisdomsmoke.svg"/>
+        <None Remove="Resources\电源.ico"/>
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="MaterialDesignThemes" Version="4.8.0" />
-        <PackageReference Include="Panuon.WPF.UI" Version="1.1.9.3" />
+        <PackageReference Include="MaterialDesignThemes" Version="4.8.0"/>
+        <PackageReference Include="Panuon.WPF.UI" Version="1.1.9.3"/>
     </ItemGroup>
 
     <ItemGroup>
         <Resource Include="Resources\6dk5kx.jpg">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </Resource>
-        <Resource Include="Resources\exqusite.ico" />
-        <Resource Include="Resources\p92ex3.jpg" />
-        <Resource Include="Resources\power.ico" />
-        <Resource Include="Resources\wisdomsmoke.svg" />
-        <Resource Include="Resources\电源.ico" />
+        <Resource Include="Resources\exqusite.ico"/>
+        <Resource Include="Resources\p92ex3.jpg"/>
+        <Resource Include="Resources\power.ico"/>
+        <Resource Include="Resources\wisdomsmoke.svg"/>
+        <Resource Include="Resources\电源.ico"/>
     </ItemGroup>
 
 </Project>

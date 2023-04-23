@@ -10,10 +10,7 @@ public static class WpfUtils
         for (var i = 0; i < VisualTreeHelper.GetChildrenCount(obj); i++)
         {
             var child = VisualTreeHelper.GetChild(obj, i);
-            if (child != null && child is T)
-            {
-                return (T)child;
-            }
+            if (child != null && child is T) return (T)child;
 
             var childOfChild = FindVisualChild<T>(child);
             if (childOfChild != null) return childOfChild;

@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Exquisite.Models;
 
-namespace Exquisite.Models
+public class DcModel : ModelBase
 {
-    public class DcModel:ModelBase
-    {
-    }
 }
