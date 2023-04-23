@@ -17,12 +17,22 @@ namespace Exquisite.ViewModels;
 
 public class DcViewModel : ViewModelBase
 {
-    public ObservableCollection<Battery> BatteryLibs { get; set; }
+    private readonly DialogHost _dialogHost;
+    public ObservableCollection<string> Batterys { get; set; } = new();
+    public ObservableCollection<string> Processes { get; set; } = new();
+    public ObservableCollection<Step> Steps { get; set; } = new();
+
+    public string SelectedBattery { get; set; }
+    public string SelectedProcess { get; set; }
+
+
     DbContext<Battery> ORDB = new();
     public SqlSugarClient CurrentDb { get; set; }
 
     public DcViewModel()
-	{
+    {
+        _dialogHost = new DialogHost();
+
         CurrentDb = new SqlSugarClient(new ConnectionConfig()
         {
             ConnectionString = Environments.ConnectionString,
@@ -42,55 +52,84 @@ public class DcViewModel : ViewModelBase
         // 创建数据库，没有就创建，有就跳过
         CurrentDb.CodeFirst.InitTables();
         // 创建表，没有就创建，有就跳过
-        CurrentDb.CodeFirst.InitTables<Battery,Process,Step>();
+        CurrentDb.CodeFirst.InitTables<Battery, Process, Step>();
 
-        
+
+    }
+
+    public void Cancel()
+    {
+        DialogHost.Close(null!);
     }
 
     public void AddBattery()
     {
         Battery battery = new Battery();
-        battery.Name = "BatteryB";
+        battery.Name = "BatteryC";
 
         Process process = new Process();
-        process.Name = "Process12";
-        process.BatteryId = battery.Id; // 设置外键关联
-
         Step step = new Step();
-        step.Voltage = 220;
-        step.ProcessId = process.Id; // 设置外键关联
-        step.Deadline = DateTime.Now.ToString(); // 设置外键关联
-
         try
         {
-            // 添加Battery记录
-            CurrentDb.Insertable(battery).ExecuteReturnIdentity();
+            process = new Process();
+            process.Name = "";
+            process.BatteryName = battery.Name; // 设置外键关联
 
-            // 添加Process记录
-            CurrentDb.Insertable(process).ExecuteReturnIdentity();
-
-            // 添加Step记录
-            CurrentDb.Insertable(step).ExecuteReturnIdentity();
+            step = new Step();
+            step.Voltage = 220;
+            step.ProcessName = process.Name; // 设置外键关联
+            step.Deadline = DateTime.Now.ToString(); // 设置外键关联
         }
         catch (Exception ee)
         {
-            if (ee.ToString().Contains("UNIQUE"))
-            {
-                Logger.Instance.Error(ee.Message);
-            }
+            Logger.Instance.Error(ee.Message);
         }
+
     }
 
     public async void ExecuteRunDialog()
     {
+        Batterys.Clear();
+
+        ObservableCollection<Battery> a1 = new ObservableCollection<Battery>(CurrentDb.Queryable<Battery>()
+            .OrderBy(x => x.Name)
+            .ToList());
+
+        foreach (var item in a1)
+        {
+            Batterys.Add(item.Name);
+        }
+
         //let's set up a little MVVM, cos that's what the cool kids are doing:
-        var view = new Dc_Battery() { DataContext = this };
+        Dc_Battery view = new Dc_Battery() { DataContext = this };
 
         //show the dialog
         var result = await DialogHost.Show(view, null, ClosingEventHandler, ClosedEventHandler);
-        //check the result...
-        Debug.WriteLine("Dialog was closed, the CommandParameter used to close it was: " + (result ?? "NULL"));
     }
+
+    public void RefreshProcess()
+    {
+        Processes.Clear();
+        ObservableCollection<Process> a2 = new ObservableCollection<Process>(CurrentDb.Queryable<Process>()
+           .Where(x => x.BatteryName == SelectedBattery)
+           .OrderBy(x => x.Name)
+            .ToList());
+        foreach (var item in a2)
+        {
+            Processes.Add(item.Name);
+        }
+    }
+
+    public void RefreshSteps()
+    {
+        Steps.Clear();
+        Steps = new ObservableCollection<Step>(CurrentDb.Queryable<Step>()
+            .Where(x => x.ProcessName == SelectedProcess)
+            .OrderBy(x => x.ProcessName)
+            .ToList()); ;
+    }
+
+
 
     private void ClosingEventHandler(object sender, DialogClosingEventArgs eventArgs)
             => Debug.WriteLine("You can intercept the closing event, and cancel here.");
@@ -114,15 +153,13 @@ public class Battery
 {
     [SugarColumn(IsPrimaryKey = true, IsIdentity = true)]
     public int Id { get; set; }
-
-    
     public string? Name { get; set; }
 
-
-    [SugarColumn(IsNullable = true)] 
+    [SugarColumn(IsNullable = true)]
     public DateTime CreateTime { get; set; }
-   
-    public List<Process> Processes { get; set; }
+
+    [SugarColumn(IsNullable = true)]
+    public List<Process>? Processes { get; set; }
 }
 
 public class Process
@@ -136,9 +173,14 @@ public class Process
     [SugarColumn(IsNullable = true)]
     public DateTime CreateTime { get; set; }
 
-    public int BatteryId { get; set; }
+    public string BatteryName { get; set; }
+    [SugarColumn(IsNullable = true)]
+    public List<Step>? Steps { get; set; }
 
-    public List<Step> Steps { get; set; }
+    internal static void Add(string? name)
+    {
+        throw new NotImplementedException();
+    }
 }
 
 public class Step
@@ -148,12 +190,12 @@ public class Step
     public double Voltage { get; set; }
     public double Current { get; set; }
     public double Power { get; set; }
-    public string Deadline { get; set; }
+    public string? Deadline { get; set; }
     public bool NeedRun { get; set; }
 
 
     [SugarColumn(IsNullable = true)]
     public DateTime CreateTime { get; set; }
 
-    public int ProcessId { get; set; }
+    public string ProcessName { get; set; }
 }

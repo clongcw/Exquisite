@@ -15,7 +15,7 @@
     <ItemGroup>
         <PackageReference Include="Caliburn.Micro" Version="4.0.212" />
         <PackageReference Include="MaterialDesignThemes" Version="4.8.0" />
-        <PackageReference Include="Panuon.WPF.UI" Version="1.1.9" />
+        <PackageReference Include="Panuon.WPF.UI" Version="1.1.9.3" />
         <PackageReference Include="PropertyChanged.Fody" Version="4.1.0" />
         <PackageReference Include="Serilog.Formatting.Compact" Version="1.1.0" />
         <PackageReference Include="SqlSugarCore" Version="5.1.4.67" />
