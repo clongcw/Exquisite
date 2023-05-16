@@ -45,8 +45,8 @@ public class DcViewModel : ViewModelBase
     public ObservableCollection<string> Processes { get; set; } = new();
     public ObservableCollection<Step> Steps { get; set; } = new();
 
-    public string SelectedBattery { get; set; }
-    public string SelectedProcess { get; set; }
+    public string? SelectedBattery { get; set; }
+    public string? SelectedProcess { get; set; }
     public SqlSugarClient CurrentDb { get; set; }
 
     public void Cancel()
@@ -86,9 +86,11 @@ public class DcViewModel : ViewModelBase
             .OrderBy(x => x.Name)
             .ToList());
 
-        foreach (var item in a1) Batterys.Add(item.Name);
+        foreach (Battery? item in a1)
+        {
+            Batterys.Add(item.Name!);//!表示一定不为空
+        }
 
-        //let's set up a little MVVM, cos that's what the cool kids are doing:
         var view = new Dc_Battery { DataContext = this };
 
         //show the dialog
@@ -102,7 +104,7 @@ public class DcViewModel : ViewModelBase
             .Where(x => x.BatteryName == SelectedBattery)
             .OrderBy(x => x.Name)
             .ToList());
-        foreach (var item in a2) Processes.Add(item.Name);
+        foreach (var item in a2) Processes.Add(item.Name!);//!表示一定不为空
     }
 
     public void RefreshSteps()
@@ -112,7 +114,6 @@ public class DcViewModel : ViewModelBase
             .Where(x => x.ProcessName == SelectedProcess)
             .OrderBy(x => x.ProcessName)
             .ToList());
-        ;
     }
 
 

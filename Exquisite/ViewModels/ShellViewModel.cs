@@ -20,7 +20,7 @@ public class ShellViewModel : Conductor<object>.Collection.OneActive
         // 创建一个每秒钟更新一次的 DispatcherTimer
         timer = new DispatcherTimer();
         timer.Interval = TimeSpan.FromSeconds(1);
-        timer.Tick += Timer_Tick;
+        timer.Tick += Timer_Tick!;
         timer.Start();
     }
 
